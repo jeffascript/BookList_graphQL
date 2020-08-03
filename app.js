@@ -1,5 +1,5 @@
 const express = require("express");
-
+const dotenv = require("dotenv").config();
 const { graphqlHTTP } = require("express-graphql");
 const schema = require("./schema/schema");
 const mongoose = require("mongoose");
@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 const app = express();
 
 mongoose.connect(
-  "mongodb+srv://graphql:myname123@cluster0.vjzy5.mongodb.net/graph-test?retryWrites=true&w=majority",
+  `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@cluster0.vjzy5.mongodb.net/graph-test?retryWrites=true&w=majority`,
   { useNewUrlParser: true, useUnifiedTopology: true }
 );
 
